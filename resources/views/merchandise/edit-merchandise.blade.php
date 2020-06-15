@@ -15,37 +15,43 @@
         <form action="/merchandise/{{ $Merchandise->id }}" method="post" enctype="multipart/form-data">
             @csrf
             @method('PUT')
-            <label>
-                商品狀態：
-                <select name="status">
-                    <option value="C" @if (old('status', $Merchandise->status) == 'C') selected @endif>建立中</option>
-                    <option value="S" @if (old('status', $Merchandise->status) == 'S') selected @endif>可販售</option>
-                </select>
-            </label>
-            <label>
-                商品類別：
-                <input type="text" name="class" placeholder="商品類別" value="{{ old('class', $Merchandise->class) }}">
-            </label>
-            <label>
-                商品名稱：
-                <input type="text" name="name" placeholder="商品名稱" value="{{ old('name', $Merchandise->name) }}">
-            </label>
-            <label>
-                商品介紹：
-                <input type="text" name="introduction" placeholder="商品介紹" value="{{ old('introduction', $Merchandise->introduction) }}">
-            </label>
-            <label>
-                商品照片：
-                <input type="file" name="photo" placeholder="商品照片">
-                <img src="{{ $Merchandise->photo ?? '/img/def.png' }}" />
-            </label>
-            <label>
-                商品價格：
-                <input type="text" name="price" placeholder="商品價格" value="{{ old('price', $Merchandise->price) }}">
-            </label>
+            <div class="form-row">
+                <div class="form-group col">
+                    <label for="status">Status</label>
+                    <select class="form-control" name="status">
+                        <option value="C" @if (old('status', $Merchandise->status) == 'C') selected @endif>Create</option>
+                        <option value="S" @if (old('status', $Merchandise->status) == 'S') selected @endif>Sell</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col">
+                    <label for="category">Category</label>
+                    <input class="form-control" type="text" name="class" placeholder="Category" value="{{ old('class', $Merchandise->class) }}">
+                </div>
+                <div class="form-group col">
+                    <label for="name">Name</label>
+                    <input class="form-control" type="text" name="name" placeholder="Name" value="{{ old('name', $Merchandise->name) }}">
+                </div>
+                <div class="form-group col">
+                    <label for="introduction">Introduction</label>
+                    <input class="form-control" type="text" name="introduction" placeholder="Introduction" value="{{ old('introduction', $Merchandise->introduction) }}">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col">
+                    <label for="photo">Photo</label>
+                    <input class="form-control-file" type="file" name="photo" placeholder="Photo">
+                    <img src="{{ $Merchandise->photo ?? '/img/def.png' }}" />
+                </div>
+                <div class="form-group col">
+                    <label for="price">Price</label>
+                    <input class="form-control" type="text" name="price" placeholder="price" value="{{ old('price', $Merchandise->price) }}">
+                </div>
+            </div>
 
 
-            <button type="submit" class="btn btn-dark">更新商品資訊</button>
+            <button type="submit" class="btn btn-dark btn-block">Submit</button>
         </form>
     </div>
 @endsection

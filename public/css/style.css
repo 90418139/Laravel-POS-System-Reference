@@ -13,3 +13,52 @@
     float: left;
     border-bottom-width: 0;
 }
+
+/* ---------------------------------------------------
+    fixed calc
+----------------------------------------------------- */
+#canvas{
+    display: none;
+    z-index: 9;
+    background: rgba(0,0,0,.5);
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    left: 0;
+    top: 0;
+    padding-top: 100px;
+    padding-left: calc(50% - 120px);
+    padding-right: calc(50% - 120px);
+}
+#canvas table{
+    background: gainsboro;
+}
+#canvas th{
+    background: #23272b;
+    height: 80px;
+    color: white;
+    text-align: right;
+    font-size: 2em;
+    padding-right: 10px;
+}
+#canvas td{
+    width: 80px;
+    height: 80px;
+    text-align: center;
+    font-size: 2em;
+}
+.number:hover{
+    background: white;
+
+}
+.number:active{
+    border-width:2px;
+    border-style:inset;
+}
+.func{
+    background: orange;
+    color: white;
+}
+.func:hover{
+    background: chocolate;
+}

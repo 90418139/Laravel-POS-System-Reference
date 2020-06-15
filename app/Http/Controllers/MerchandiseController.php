@@ -31,7 +31,7 @@ class MerchandiseController extends Controller
             }
         }
         $binding = [
-            'title' => '管理商品',
+            'title' => 'Manage Product',
             'MerchandisePaginate' => $MerchandisePaginate,
         ];
 
@@ -68,7 +68,7 @@ class MerchandiseController extends Controller
 
         // 網站title/商品資料包成一包
         $binding = [
-            'title' => '編輯商品',
+            'title' => 'Edit Product',
             'Merchandise' => $Merchandise,
         ];
 

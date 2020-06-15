@@ -55,7 +55,7 @@
                                     @php $a = 0 @endphp
                                         @foreach($merchandise as $item)
                                             @if($class[$i]->class == $item->class)
-                                                @if($a % 4 == 0) <tr> @endif
+                                                @if($a % $j == 0) <tr> @endif
                                                 <td style="background: #868e96;border: 5px #fff solid">
                                                     <a class="order_item" href="#">
                                                         <img width="100%" height="90px" src="" hidden/>
@@ -106,6 +106,39 @@
             </div>
         </div>
 
+    </div>
+    <div id="canvas" >
+        <table border="1px">
+            <thead>
+                <tr>
+                    <th colspan="3">
+                        <div type="text" class="text" id="text"></div>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="number">1</td>
+                    <td class="number">2</td>
+                    <td class="number">3</td>
+                </tr>
+                <tr>
+                    <td class="number">4</td>
+                    <td class="number">5</td>
+                    <td class="number">6</td>
+                </tr>
+                <tr>
+                    <td class="number">7</td>
+                    <td class="number">8</td>
+                    <td class="number">9</td>
+                </tr>
+                <tr>
+                    <td class="number">0</td>
+                    <td class="func" id="c">C</td>
+                    <td class="func" id="ent">Ent</td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 
 @endsection

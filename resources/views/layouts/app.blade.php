@@ -21,7 +21,7 @@
     <link rel="stylesheet" type="text/css" href="/DataTables-1.10.21/css/dataTables.bootstrap4.min.css"/>
 
 </head>
-<body style="overflow: hidden">
+<body>
 <div id="app">
     <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
         <div class="container">
@@ -60,20 +60,20 @@
                                     Master
                                 </a>
                                 <a class="dropdown-item" href="/make">
-                                    slave
+                                    Slave
                                 </a>
                             </div>
                         </li>
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                item<span class="caret"></span>
+                                Product<span class="caret"></span>
                             </a>
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="/merchandise/create">
-                                    建立商品
+                                    Create
                                 </a>
                                 <a class="dropdown-item" href="/merchandise/manage">
-                                    管理商品
+                                    Manage
                                 </a>
                             </div>
                         </li>
@@ -83,6 +83,7 @@
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="dashboard">Dashboard</a>
                                 <a class="dropdown-item" href="{{ route('logout') }}"
                                    onclick="event.preventDefault();
                                                  document.getElementById('logout-form').submit();">
@@ -114,40 +115,23 @@
 <script type="text/javascript" src="/DataTables-1.10.21/js/jquery.dataTables.min.js"></script>
 <script type="text/javascript" src="/DataTables-1.10.21/js/dataTables.bootstrap4.min.js"></script>
 <script type="text/javascript">
+    var item,price;
     $(document).ready(function () {
         $('.order_item').click(function (event) {
             event.preventDefault();
-            var item = $(this).find('span').eq(0).text();
-            var price = $(this).find('span').eq(1).text();
-            var qty = prompt('Enter Qty');
-            price = price * qty;
-            var td = "<tr><td>" + item + "</td><td>" + qty + "</td><td>" + price + "</td></tr>";
-            $('#right_table_body').append(td);
-            sum_total();
-            set_input();
-            $('#input_user').val($('#table_num').text());
+            $('#canvas').show();
+            item = $(this).find('span').eq(0).text();
+            price = $(this).find('span').eq(1).text();
 
         });
-        $('.order_table').click(function (event) {
-            event.preventDefault();
-            var table = $(this).find('span').eq(0).text();
-            $('#table_num').html(table);
-            $('#table_menu').hide();
-            $('#item_menu').show();
-            $('#input_user').val(table);
-        });
-        $('#item_menu').hide();
         $('.myTable').DataTable({
-            'iDisplayLength': 3,
+            'iDisplayLength': 2,
             'bFilter': false,
             "bInfo": false,
             "bLengthChange": false,
             "bSort": false,
         });
     });
-    $(document).ready( function () {
-
-    } );
     function sum_total() {
         tbody = document.getElementById('right_table_body');
         total_cost = 0
@@ -179,6 +163,26 @@
         sum_total();
         set_input();
     }
+    // 获取页面元素
+    $('.number').click( function () {
+        value = $('#text').html() + $(this).html();
+       $('#text').html(value);
+    });
+    $('#c').click(function () {
+        $('#text').html('');
+    });
+    $('#ent').click(function () {
+        $('#canvas').hide();
+        var qty = $('#text').html();
+        price = price * qty;
+        var td = "<tr><td>" + item + "</td><td>" + qty + "</td><td>" + price + "</td></tr>";
+        $('#right_table_body').append(td);
+        sum_total();
+        set_input();
+        $('#input_user').val($('#table_num').text());
+        $('#text').html('');
+    });
+
 </script>
 </body>
 </html>

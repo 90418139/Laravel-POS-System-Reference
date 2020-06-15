@@ -13,32 +13,34 @@
 
 
     <table class="table">
-        <tr>
-            <th>編號</th>
-            <th>名稱</th>
-            <th>圖片</th>
-            <th>狀態</th>
-            <th>價格</th>
-            <th>剩餘數量</th>
-            <th>編輯</th>
-        </tr>
-        @foreach($MerchandisePaginate as $item)
+        <thead>
             <tr>
-                <td>{{ $item->id }}</td>
-                <td>{{ $item->name }}</td>
-                <td><img src="{{ $Merchandise->photo ?? '/img/def.png' }}" /></td>
-                <td>
-                    @if($item->status == 'C')
-                        建立中
-                    @else
-                        可販售
-                    @endif
-                </td>
-                <td>{{ $item->price }}</td>
-                <td>{{ $item->reain_count }}</td>
-                <td><a href="/merchandise/{{ $item->id }}/edit">編輯</a></td>
+                <th>Num</th>
+                <th>Name</th>
+                <th>Photo</th>
+                <th>Status</th>
+                <th>Price</th>
+                <th>Edit</th>
             </tr>
-        @endforeach
+        </thead>
+        <tbody>
+            @foreach($MerchandisePaginate as $item)
+                <tr>
+                    <td>{{ $item->id }}</td>
+                    <td>{{ $item->name }}</td>
+                    <td><img src="{{ $Merchandise->photo ?? '/img/def.png' }}" /></td>
+                    <td>
+                        @if($item->status == 'C')
+                            Create
+                        @else
+                            Sell
+                        @endif
+                    </td>
+                    <td>{{ $item->price }}</td>
+                    <td><a href="/merchandise/{{ $item->id }}/edit">Edit</a></td>
+                </tr>
+            @endforeach
+        </tbody>
     </table>
 
     {{-- 分頁頁數按鈕 --}}
