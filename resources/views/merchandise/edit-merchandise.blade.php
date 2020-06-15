@@ -27,11 +27,11 @@
             <div class="form-row">
                 <div class="form-group col">
                     <label for="category">Category</label>
-                    <input class="form-control" type="text" name="class" placeholder="Category" value="{{ old('class', $Merchandise->class) }}">
+                    <input class="form-control" type="text" name="class" placeholder="Category" value="{{ old('class', $Merchandise->class) }}" required>
                 </div>
                 <div class="form-group col">
                     <label for="name">Name</label>
-                    <input class="form-control" type="text" name="name" placeholder="Name" value="{{ old('name', $Merchandise->name) }}">
+                    <input class="form-control" type="text" name="name" placeholder="Name" value="{{ old('name', $Merchandise->name) }}" required>
                 </div>
                 <div class="form-group col">
                     <label for="introduction">Introduction</label>
@@ -46,7 +46,7 @@
                 </div>
                 <div class="form-group col">
                     <label for="price">Price</label>
-                    <input class="form-control" type="text" name="price" placeholder="price" value="{{ old('price', $Merchandise->price) }}">
+                    <input class="form-control" type="text" name="price" placeholder="price" value="{{ old('price', $Merchandise->price) }}" required>
                 </div>
             </div>
 

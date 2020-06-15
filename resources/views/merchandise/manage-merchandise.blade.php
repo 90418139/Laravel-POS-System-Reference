@@ -16,6 +16,7 @@
         <thead>
             <tr>
                 <th>Num</th>
+                <th>Category</th>
                 <th>Name</th>
                 <th>Photo</th>
                 <th>Status</th>
@@ -27,6 +28,7 @@
             @foreach($MerchandisePaginate as $item)
                 <tr>
                     <td>{{ $item->id }}</td>
+                    <td>{{ $item->class }}</td>
                     <td>{{ $item->name }}</td>
                     <td><img src="{{ $Merchandise->photo ?? '/img/def.png' }}" /></td>
                     <td>
