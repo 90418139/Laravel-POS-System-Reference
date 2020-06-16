@@ -7,55 +7,52 @@
 {{-- 傳送資料到母版模，並指定變數為 content --}}
 @section('content')
     <div class="container-fluid">
-        <div class="row">
+        <div class="row" style="margin-top: 10px">
             @if(isset($TableList))
                 @foreach($TableList as $table)
-
                     @if($table->complete == 'N')
-                    <div class="col">
+                    <div class="col-3">
                         <div class="card">
-                            <div class="card-header">
+                            <h5 class="card-header">
                                 {{ $table->user_id }}
-                            </div>
+                            </h5>
                             <div class="card-body">
-                                <table class="table table-hover">
-                                    <thead>
-                                    <tr>
-                                        <th scope="col">item</th>
-                                        <th scope="col">qty</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    @foreach($MakeList as $make)
-                                        @if($make->user_id == $table->user_id and $make->complete == 'N')
-                                            <tr>
-                                                <th scope="row">{{ $make->merchandise_id }}</th>
-                                                <td>{{ $make->buy_count }}</td>
-                                            </tr>
-
-                                        @endif
-                                    @endforeach
-                                    <form action="/ordered" method="post">
+                                <form action="/ordered" method="post">
+                                    <table class="table table-hover">
                                         @csrf
                                         @method('post')
-                                    <input name="id" value="
-                                    @foreach($MakeList as $make)
-                                        @if($make->user_id == $table->user_id and $make->complete == 'N')
-                                            {{ $make->id }},
-                                        @endif
-                                    @endforeach
-                                        " hidden>
-                                        <input class="btn" type="submit" value="finish">
-                                    </form>
-                                    </tbody>
-                                </table>
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">item</th>
+                                                <th scope="col">qty</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        @foreach($MakeList as $make)
+                                            @if($make->user_id == $table->user_id and $make->complete == 'N')
+                                                <tr>
+                                                    <th scope="row">{{ $make->merchandise_id }}</th>
+                                                    <td>{{ $make->buy_count }}</td>
+                                                </tr>
+                                            @endif
+                                        @endforeach
+                                        <input name="id" value="
+                                        @foreach($MakeList as $make)
+                                            @if($make->user_id == $table->user_id and $make->complete == 'N')
+                                                {{ $make->id }},
+                                            @endif
+                                        @endforeach
+                                            " hidden>
+                                        </tbody>
+                                    </table>
+                                    <input class="btn btn-dark btn-block" type="submit" value="finish">
+                                </form>
                             </div>
                         </div>
                     </div>
                     @endif
                 @endforeach
             @endif
-
         </div>
     </div>
 

@@ -4,7 +4,6 @@
 
 Under construction...
 
-![image](https://github.com/90418139/Laravel-POS-System-Reference/blob/master/public/img/qpuo9-m4001.gif)
 ## step 1:
 
 Get this project.

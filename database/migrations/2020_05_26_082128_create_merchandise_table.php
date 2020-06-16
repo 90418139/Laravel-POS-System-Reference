@@ -16,11 +16,11 @@ class CreateMerchandiseTable extends Migration
         Schema::create('merchandise', function (Blueprint $table) {
             $table->id();
             $table->string('status',1)->default('C');
-            $table->string('name',80)->nullable();
-            $table->string('introduction');
+            $table->string('class',20)->default(' ');
+            $table->string('name',80)->default(' ');
+            $table->string('introduction')->nullable();
             $table->string('photo',50)->nullable();
             $table->integer('price')->default(0);
-            $table->integer('remain_count')->default(0);
             $table->timestamps();
 
             $table->index(['status'], 'merchandise_status_idx');

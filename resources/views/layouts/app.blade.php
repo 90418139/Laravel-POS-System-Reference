@@ -20,6 +20,9 @@
     {{-- DataTables --}}
     <link rel="stylesheet" type="text/css" href="/DataTables-1.10.21/css/dataTables.bootstrap4.min.css"/>
 
+    {{-- Chart.js --}}
+    <link rel="stylesheet" type="text/css" href="/Chart/Chart.min.css"/>
+
 </head>
 <body>
 <div id="app">
@@ -83,7 +86,7 @@
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="dashboard">Dashboard</a>
+                                <a class="dropdown-item" href="/dashboard">Dashboard</a>
                                 <a class="dropdown-item" href="{{ route('logout') }}"
                                    onclick="event.preventDefault();
                                                  document.getElementById('logout-form').submit();">
@@ -114,75 +117,9 @@
 {{-- DataTables --}}
 <script type="text/javascript" src="/DataTables-1.10.21/js/jquery.dataTables.min.js"></script>
 <script type="text/javascript" src="/DataTables-1.10.21/js/dataTables.bootstrap4.min.js"></script>
-<script type="text/javascript">
-    var item,price;
-    $(document).ready(function () {
-        $('.order_item').click(function (event) {
-            event.preventDefault();
-            $('#canvas').show();
-            item = $(this).find('span').eq(0).text();
-            price = $(this).find('span').eq(1).text();
-
-        });
-        $('.myTable').DataTable({
-            'iDisplayLength': 2,
-            'bFilter': false,
-            "bInfo": false,
-            "bLengthChange": false,
-            "bSort": false,
-        });
-    });
-    function sum_total() {
-        tbody = document.getElementById('right_table_body');
-        total_cost = 0
-        for(i = 0; i < tbody.rows.length; i++){
-            total_cost += parseInt(tbody.rows[i].cells[2].innerHTML);
-        }
-        total = document.getElementById('total');
-        total.innerHTML = total_cost;
-    }
-    function set_input() {
-        var item = '';
-        var qty ='';
-        var price = '';
-        tbody = document.getElementById('right_table_body');
-        for(i = 0; i < tbody.rows.length; i++){
-            item += tbody.rows[i].cells[0].innerHTML + ',';
-            qty += tbody.rows[i].cells[1].innerHTML + ',';
-            price += tbody.rows[i].cells[2].innerHTML + ',';
-        }
-        $('#input_item').val(item);
-        $('#input_qty').val(qty);
-        $('#input_price').val(price);
-    }
-</script>
-<script type="text/javascript">
-    function item_delete(event) {
-        td = event.target;
-        td.parentNode.remove();
-        sum_total();
-        set_input();
-    }
-    // 获取页面元素
-    $('.number').click( function () {
-        value = $('#text').html() + $(this).html();
-       $('#text').html(value);
-    });
-    $('#c').click(function () {
-        $('#text').html('');
-    });
-    $('#ent').click(function () {
-        $('#canvas').hide();
-        var qty = $('#text').html();
-        price = price * qty;
-        var td = "<tr><td>" + item + "</td><td>" + qty + "</td><td>" + price + "</td></tr>";
-        $('#right_table_body').append(td);
-        sum_total();
-        set_input();
-        $('#input_user').val($('#table_num').text());
-        $('#text').html('');
-    });
-
-</script>
+{{-- Chart.js --}}
+<script type="text/javascript" src="/Chart/Chart.min.js"></script>
+{{-- myScript --}}
+<script type="text/javascript" src="/js/script.js"></script>
 </body>
 </html>

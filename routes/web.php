@@ -27,9 +27,6 @@ Route::group(['prefix' => '/'], function (){
             Route::group(['prefix' => '{merchandise_id}'], function () {
                 // 商品單品資料修改
                 Route::put('/', 'MerchandiseController@ItemUpdateProcess');
-                // 商品清單檢視
-                Route::get('/', 'MerchandiseController@ItemPage')
-                    ->where(['merchandise_id' => '[0-9]+',]);
                 // 商品編輯
                 Route::get('/edit', 'MerchandiseController@ItemEditPage');
             });
@@ -38,45 +35,10 @@ Route::group(['prefix' => '/'], function (){
         Route::post('/order','MerchandiseController@Order');
         Route::get('/make','TransactionController@MakeList')->name('make');
         Route::post('/ordered', 'TransactionController@MakeFinish');
-
+        Route::get('/dashboard', 'HomeController@dashboard');
     });
 
 });
 
-
-Auth::routes();
-
-/*
-// 商品
-Route::group(['prefix' => 'merchandise'], function (){
-    // 商品清單檢視
-    Route::get('/', 'MerchandiseController@ListPage');
-    Route::group(['middleware' => ['user.auth.admin']], function (){
-        // 商品資料新增
-        Route::get('/create', 'MerchandiseController@CreateProcess');
-        // 商品管理清單檢視
-        Route::get('/manage', 'MerchandiseController@ManageListPage');
-    });
-
-
-    //指定商品
-    Route::group(['prefix' => '{merchandise_id}'], function (){
-        // 商品清單檢視
-        Route::get('/', 'MerchandiseController@ItemPage')
-            ->where(['merchandise_id' => '[0-9]+',]);;
-        // 商品單品編輯頁面檢視
-        Route::get('/edit', 'MerchandiseController@ItemEditPage')
-            ->middleware('user.auth.admin');
-        // 商品單品資料修改
-        Route::put('/', 'MerchandiseController@ItemUpdateProcess')
-            ->middleware('user.auth.admin');
-        // 購買商品
-        Route::post('/buy', 'MerchandiseController@ItemBuyProcess')
-            ->middleware('user.auth');
-    });
-});
-
-// 交易
-Route::get('/transaction', 'TransactionController@transactionListPage')
-    ->middleware(['user.auth']);
-*/
+// 停用使用者註冊功能
+Auth::routes(['register' => false]);
