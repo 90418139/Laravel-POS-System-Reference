@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Merchandise;
 use App\Transaction;
 use Illuminate\Support\Facades\Validator;
-use Faker\Provider\Image;
 
 class MerchandiseController extends Controller
 {
@@ -40,7 +39,6 @@ class MerchandiseController extends Controller
             'class'        => ' ',       //商品類別
             'name'         => 'item',     // 商品名稱
             'introduction' => 'item',     // 商品介紹
-            'photo'        => 'null', // 商品照片
             'price'        => 0,      // 價格
         ];
         $Merchandise = Merchandise::create($merchandise_data);
@@ -107,11 +105,10 @@ class MerchandiseController extends Controller
             // 產生自訂隨機檔案名稱
             $file_name = uniqid() . '.' . $file_extension;
             // 檔案相對路徑
-            $file_relative_path = 'images/merchandise/' . $file_name;
+            $file_relative_path = 'img/' . $file_name;
             // 檔案存放目錄為對外公開 public 目錄下的相對位置
             $file_path = public_path($file_relative_path);
-            // 裁切圖片
-            $image = Image::make($photo)->fit(450,300)->save($file_path);
+            $photo->move('img/', $file_name);
             // 設定圖片檔案相對位置
             $input['photo'] = $file_relative_path;
         }
@@ -119,7 +116,7 @@ class MerchandiseController extends Controller
         $Merchandise->update($input);
 
         // 重新導向到商品編輯頁面
-        return redirect('/');
+        return redirect('/merchandise/manage');
     }
 
     // 商品清單檢視

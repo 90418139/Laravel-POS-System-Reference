@@ -30,7 +30,7 @@
                     <td>{{ $item->id }}</td>
                     <td>{{ $item->class }}</td>
                     <td>{{ $item->name }}</td>
-                    <td><img src="{{ $Merchandise->photo ?? '/img/def.png' }}" /></td>
+                    <td>@if(isset($item->photo)) V @else X @endif</td>
                     <td>
                         @if($item->status == 'C')
                             Create

@@ -42,7 +42,7 @@
                 <div class="form-group col">
                     <label for="photo">Photo</label>
                     <input class="form-control-file" type="file" name="photo" placeholder="Photo">
-                    <img src="{{ $Merchandise->photo ?? '/img/def.png' }}" />
+                    <img height="200px" width="300px" src="{{ $Merchandise->photo ?? '/img/def.png' }}" />
                 </div>
                 <div class="form-group col">
                     <label for="price">Price</label>

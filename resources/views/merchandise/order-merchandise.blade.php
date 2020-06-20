@@ -26,8 +26,6 @@
                     </div>
                 </nav>
 
-
-
                 <div class="tab-content" id="nav-tabContent">
                     @if(isset($class))
                         @for($i=0;$i<count($class);$i++)
@@ -37,7 +35,7 @@
                                     @php $t+=1 @endphp
                                 @endif
                             @endforeach
-                            @for($j=5;$j>0;$j--)
+                            @for($j=2;$j>0;$j--)
                                 @if($t % $j == 0)
                                     @break
                                 @endif
@@ -56,12 +54,15 @@
                                         @foreach($merchandise as $item)
                                             @if($class[$i]->class == $item->class)
                                                 @if($a % $j == 0) <tr> @endif
-                                                <td style="background: #868e96;border: 5px #fff solid">
+                                                <td style="height: 130px">
                                                     <a class="order_item" href="#">
-                                                        <img width="100%" height="90px" src="" hidden/>
-                                                        <i class="fas fa-shopping-bag" style="width: 100%;height: 90px;color: #1d2124"></i>
-                                                        <span>{{ $item->name }}</span>
-                                                        <span>{{ $item->price }}</span>
+                                                    <div class="single_menu">
+                                                        <img src="{{ $item->photo ?? 'img/def.png' }}" alt="burger">
+                                                        <div class="menu_content">
+                                                            <h4>{{ $item->name }}<span>{{ $item->price }}</span></h4>
+                                                            <p>{{ $item->introduction }}</p>
+                                                        </div>
+                                                    </div>
                                                     </a>
                                                 </td>
                                                 @php $a += 1 @endphp
