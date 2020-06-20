@@ -13,7 +13,7 @@
         <div class="row" style="margin: 5px">
             <div class="col-8" id="table_menu">
                 <nav>
-                    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                    <div class="nav nav-tabs menu_tab mb-4" id="nav-tab" role="tablist">
                         @if(isset($class))
                             @for($i=0;$i<count($class);$i++)
                                 @if($class[$i]->status == 'S')

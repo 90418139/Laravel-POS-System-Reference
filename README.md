@@ -2,6 +2,8 @@
 
 ## Laravel-POS-System-Reference
 
+Laravel Framework 7.12.0
+
 Under construction...
 
 ## step 1:
