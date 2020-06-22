@@ -54,7 +54,7 @@
                                         @foreach($merchandise as $item)
                                             @if($class[$i]->class == $item->class)
                                                 @if($a % $j == 0) <tr> @endif
-                                                <td style="height: 130px">
+                                                <td style="height: 130px; width: 20vw">
                                                     <a class="order_item" href="#">
                                                     <div class="single_menu">
                                                         <img src="{{ $item->photo ?? 'img/def.png' }}" alt="burger">
