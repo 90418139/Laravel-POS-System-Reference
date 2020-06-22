@@ -13,7 +13,7 @@
         <div class="row" style="margin: 5px">
             <div class="col-8" id="table_menu">
                 <nav>
-                    <div class="nav nav-tabs menu_tab mb-4" id="nav-tab" role="tablist">
+                    <div class="nav nav-tabs menu_tab mb-2" id="nav-tab" role="tablist">
                         @if(isset($class))
                             @for($i=0;$i<count($class);$i++)
                                 @if($class[$i]->status == 'S')
@@ -82,10 +82,10 @@
                 <form method="post" action="/order" >
                     @csrf
                     @method('post')
-                    <table class="table table-hover" style="border:1px #cccccc solid;overflow-y: scroll;height: 50vh;display: block;">
+                    <table class="table table-hover" style="border:1px #cccccc solid;overflow-y: scroll;height: 55vh;display: block;">
                         <thead>
                         <tr>
-                            <th scope="col" style="width: 180px">Item</th>
+                            <th scope="col" style="width: 100%">Item</th>
                             <th scope="col">Qty</th>
                             <th scope="col">Price</th>
                         </tr>

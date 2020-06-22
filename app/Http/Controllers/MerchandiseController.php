@@ -127,7 +127,7 @@ class MerchandiseController extends Controller
         $class = Merchandise::where('status', 'S')->groupBy('class')->get();
 
         $binding = [
-            'title' => trans('商品列表'),
+            'title' => trans('Order'),
             'table' => '0',
             'class' => $class,
             'merchandise'=> $merchandise,

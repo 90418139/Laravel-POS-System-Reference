@@ -7,22 +7,26 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'Laravel') }} - {{ $title }}</title>
 
     {{-- fontawesome --}}
     <link href="/fontawesome/css/all.css" rel="stylesheet">
     <script defer src="/fontawesome/js/all.js"></script>
 
-    {{-- Styles --}}
+    {{-- Bootstrap --}}
     <link href="/css/bootstrap.min.css" rel="stylesheet">
+
+    {{-- myStyles --}}
     <link href="/css/style.css" rel="stylesheet">
 
-    {{-- DataTables --}}
-    <link rel="stylesheet" type="text/css" href="/DataTables-1.10.21/css/dataTables.bootstrap4.min.css"/>
-
-    {{-- Chart.js --}}
-    <link rel="stylesheet" type="text/css" href="/Chart/Chart.min.css"/>
-
+    @if($title == 'Order')
+        {{-- DataTables --}}
+        <link rel="stylesheet" type="text/css" href="/DataTables-1.10.21/css/dataTables.bootstrap4.min.css"/>
+    @endif
+    @if($title == 'Dashboard')
+        {{-- Chart.js --}}
+        <link rel="stylesheet" type="text/css" href="/Chart/Chart.min.css"/>
+    @endif
 </head>
 <body>
 <div id="app">
@@ -56,7 +60,7 @@
                     @else
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                Order<span class="caret"></span>
+                                <i class="fas fa-solar-panel"></i>Order<span class="caret"></span>
                             </a>
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="/">
@@ -69,7 +73,7 @@
                         </li>
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                Product<span class="caret"></span>
+                                <i class="fab fa-product-hunt"></i>Product<span class="caret"></span>
                             </a>
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="/merchandise/create">
@@ -110,15 +114,19 @@
         @yield('content')
     </main>
 </div>
-
+{{-- Bootstrap --}}
 <script src="/js/jquery-3.3.1.slim.min.js"></script>
 <script src="/js/popper.min.js"></script>
 <script src="/js/bootstrap.min.js"></script>
-{{-- DataTables --}}
-<script type="text/javascript" src="/DataTables-1.10.21/js/jquery.dataTables.min.js"></script>
-<script type="text/javascript" src="/DataTables-1.10.21/js/dataTables.bootstrap4.min.js"></script>
-{{-- Chart.js --}}
-<script type="text/javascript" src="/Chart/Chart.min.js"></script>
+@if($title == 'Order')
+    {{-- DataTables --}}
+    <script type="text/javascript" src="/DataTables-1.10.21/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="/DataTables-1.10.21/js/dataTables.bootstrap4.min.js"></script>
+@endif
+@if($title == 'Dashboard')
+    {{-- Chart.js --}}
+    <script type="text/javascript" src="/Chart/Chart.min.js"></script>
+@endif
 {{-- myScript --}}
 <script type="text/javascript" src="/js/script.js"></script>
 </body>

@@ -1,20 +1,31 @@
-var item,price;
-$(document).ready(function () {
-    $('.order_item').click(function (event) {
-        event.preventDefault();
-        $('#canvas').show();
-        item = $(this).find('span').eq(0).text();
-        price = $(this).find('span').eq(1).text();
+/* ---------------------------------------------------
+    DataTables
+----------------------------------------------------- */
 
-    });
+$(document).ready(function () {
     $('.myTable').DataTable({
-        'iDisplayLength': 2,
+        'iDisplayLength': 3,
+        'pagingType' : 'simple_numbers',
         'bFilter': false,
         "bInfo": false,
         "bLengthChange": false,
         "bSort": false,
     });
 });
+
+/* ---------------------------------------------------
+    Order
+----------------------------------------------------- */
+
+var item,price;
+$('.order_item').click(function (event) {
+    event.preventDefault();
+    $('#canvas').show();
+    item = $(this).find('h4').html();
+    item = item.split('<span>')[0];
+    price = $(this).find('span').text();
+});
+
 function sum_total() {
     tbody = document.getElementById('right_table_body');
     total_cost = 0
@@ -76,9 +87,9 @@ var ctx = document.getElementById("myChart");
 var myChart = new Chart(ctx, {
     type: 'line',
     data: {
-        labels: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+        labels: labels,
         datasets: [{
-            data: [15339, 21345, 18483, 24003, 23489, 24092, 12034],
+            data: data,
             lineTension: 0,
             backgroundColor: 'transparent',
             borderColor: '#007bff',
@@ -99,3 +110,5 @@ var myChart = new Chart(ctx, {
         }
     }
 });
+
+
